@@ -1,0 +1,78 @@
+{{ define "demo" }}
+<h1>
+  Home Automation Demo
+</h1>
+<form action="SetServerStatus" method="post">
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <label for="StatusDesc1">Status 1 Description</label>
+      </td>
+      <td>
+        <input name="StatusDesc1" id="statusDesc1" placeholder="status 1 description" value="{{.StatusDesc1}}">
+      </td>
+      <td>
+        <label for="Status1">Status 1</label>
+      </td>
+      <td>
+        <input name="Status1" id="Status1" placeholder="status 1 value" value="{{.Status1}}">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="StatusDesc2">Status 2 Description</label>
+      </td>
+      <td>
+        <input name="StatusDesc2" id="StatusDesc2" placeholder="status 2 description" value="{{.StatusDesc2}}">
+      </td>
+      <td>
+        <label for="Status2">Status 2</label>
+      </td>
+      <td>
+        <input name="Status2" id="Status2" placeholder="status 2 value" value="{{.Status2}}">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="StatusDesc3">Status 3 Description</label>
+      </td>
+      <td>
+        <input name="StatusDesc3" id="StatusDesc3" placeholder="status 3 description" value="{{.StatusDesc3}}">
+      </td>
+      <td>
+        <label for="Status3">Status 3</label>
+      </td>
+      <td>
+        <input name="Status3" id="Status3" placeholder="status 3 value" value="{{.Status3}}">
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <input type="submit" value="Update Status">
+      </td>
+      <td>
+        <input type="button" onclick="getLightStatus();" value="Get Light Status">
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>
+<script>
+  function getLightStatus() {
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            alert(xmlhttp.responseText)
+        }
+    };
+    xmlhttp.open("GET", "GetLightStatus", true);
+    xmlhttp.send();
+  }
+</script>
+{{ end }}
